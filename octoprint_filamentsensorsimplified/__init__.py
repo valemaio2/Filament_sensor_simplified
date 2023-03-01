@@ -385,6 +385,9 @@ class Filament_sensor_simplifiedPlugin(octoprint.plugin.StartupPlugin,
                 oldTrigger = newTrigger
             elif oldTrigger != newTrigger:
                 x = 0
+		# imapping: Adding reset of oldTrigger so it looks for ten consecutive values
+		# rather than waiting for ten of the original values.  This was the cause of the log spamming. 
+		oldTrigger = newTrigger
                 # Commenting out this info log due to spamming the log file and filling up the memory quickly.
                 # See https://github.com/LuckyX182/Filament_sensor_simplified/issues/64
                 #self._logger.info("Repeating sensor read due to false positives")
